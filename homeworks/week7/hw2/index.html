@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+        <head>
+                <link rel="stylesheet" href="./index.css" />
+        </head>
+        <body>
+                <div class = 'navigation__bar'>
+                        <div class = 'navigation__title'>Just A Bite!</div>
+                        <div >
+                                <ul class = 'navigation__list'>
+                                        <li>抽個大獎</li>
+                                        <li>我要點餐</li>
+                                        <li>查詢訂單</li>
+                                        <li>常見問題</li>
+                                </ul>
+                        </div>
+                </div>
+                
+                <div class = 'faq'>
+
+                        <section class = 'faq__title'>
+                                <div>FAQ - 常見問題</div>      
+                        </section>
+                        <div class = 'faq__questions'>
+
+                                <div class = faq__Q>
+                                        <span class = 'faq__number'>Q1:</span>
+                                        <span class = 'faq__disc'>如何辦理退貨？</span>
+                                </div>
+                                <div class = faq__Q>
+                                        <span class = 'faq__number'>Q2:</span>
+                                        <span class = 'faq__disc'>目前提供哪些付款方式？</span>
+                                </div>
+                                <div class = faq__Q>
+                                        <span class = 'faq__number'>Q3:</span>
+                                        <span class = 'faq__disc'>線上刷卡如何操作呢？</span>
+                                </div>
+                                <div class = faq__Q>
+                                        <span class = 'faq__number'>Q4:</span>
+                                        <span class = 'faq__disc'>如何查詢目前訂單的處理情況？</span>
+                                </div>
+                                <div class = faq__Q>
+                                        <span class = 'faq__number'>Q5:</span>
+                                        <span class = 'faq__disc'>訂單成立後，是否可以取消或是更改訂單數量及商品？</span>
+                                </div>
+                                <div class = faq__Q>
+                                        <span class = 'faq__number'>Q6:</span>
+                                        <span class = 'faq__disc'>我想購買的商品已經缺貨，什麼時候會進貨呢？</span>
+                                </div>
+                       
+                        </div>
+                </div>
+                <div class = 'footer__upper'>
+                          <div class = 'footer__disc'>
+                                <div class = 'address'>餐館地址: 天上地下天堂路三分之一里六段520號</div>
+                                <div class = 'phonenumber'>訂位專線：02-1314-5566</div>
+                                <div class = 'time'>營業時間：週一〜週五 09:00~18:00 / 週六、週日、國定假日（含連假）休息</div>
+                                <div class = 'email'>email：service@justabite.com.tw</div>
+                          </div>
+                        <div class = 'footer__links'>
+                                <div class = 'footer__logo'>Just A Bite!</div>
+                                <div class = 'footer__link'>
+                                        <a>Facebook</a>/
+                                        <a>Instrgram</a>/
+                                        <a>Youtube</a>
+                                </div>
+                        </div>
+                </div>
+                
+                
+                <div class = 'footer__lower'>
+                        Copyright © 2020 Just A Bite All Rights Reserved. 咬一口股份有限公司版權所有
+                </div>
+                
+                <script>
+                        const openList = document.querySelectorAll('.faq__Q')
+                        const item = document.createElement('div')
+                        const answer = ['不告訴你不告訴你不告訴你不告訴你不告訴你不告訴你不告訴你',
+                                        '今天免費今天免費今天免費今天免費今天免費今天免費今天免費',
+                                        `線上刷卡的使用方式也超簡單，只要您確認您當次的購物清單與
+                                        金額都無誤，就可立即到匯款上傳系統，登入個人帳號密碼後，點
+                                        選"線上刷卡方式"，確認收件住址後，再進行刷卡確認程序即可～`,
+                                        '真的沒有辦法真的沒有辦法真的沒有辦法真的沒有辦法真的沒有辦法',
+                                        '真的沒有辦法真的沒有辦法真的沒有辦法真的沒有辦法真的沒有辦法',
+                                        '我不知道我不知道我不知道我不知道我不知道我不知道我不知道我不知道'
+                                        ]
+                        
+                        for (let i = 0 ;i < openList.length ;i++){
+                        openList[i].addEventListener('click',function(e){
+                                item.innerText = `${answer[i]}`
+                                openList[i].appendChild(item)
+                                item.classList.add('whenClick')
+                        })
+                        }
+
+                </script>
+
+
+
+        </body>
+
+
+</html>

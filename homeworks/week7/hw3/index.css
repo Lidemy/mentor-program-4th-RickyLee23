@@ -1,0 +1,58 @@
+* {font-family:fantasy;}
+                        .todo__list{
+                                width: 500px;
+                                background:#f5f5308a;
+                                text-align: center;
+                                box-shadow: 2px 2px 6px #cccccc;
+                                border-radius: 10px;
+                                padding-bottom:30px;
+                                display:inline-block;
+                        }
+                        .box {
+                                width:350px;
+                                padding:15px;
+                                border:0px;
+                                border-radius: 5px;
+                                margin-top: 10px;
+                        }
+                        .title {
+                                padding-top:50px;
+                                font-size: 50px;
+                                
+                        }
+                        input[type='checkbox'] {
+                                display:inline-block;
+                                width:25px;
+                                height:25px;
+                                cursor:pointer;
+                                margin:0px;
+                        }
+                        .button__delete {
+                                display:inline-block;
+                                width:25px;
+                                height:25px;
+                                cursor:pointer;
+                                color:black;
+                                background: white;
+                                
+                        }
+                        .todo__lower {
+                                display: flex;
+                                justify-content: center;
+                                margin:20px;
+                                
+                        }
+                        .comment__disc {
+                                width:300px;
+                                text-align: left;
+                                padding-left:20px;
+                                padding-top:3px;
+                        }
+                        .done {
+                                text-decoration:line-through;
+                        }
+                        .whole__page {
+                                text-align: center;
+                                
+                        }
+                        
