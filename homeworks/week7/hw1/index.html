@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8"> 
+
+  <title>活動報名表單</title>
+  <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css" />
+  <link rel="stylesheet" href="./index.css" /> 
+  
+
+</head>
+
+<body>
+
+  <div class="container__all">
+          <div class="color__block"></div>
+          <form class="container__title" >
+                  <div class="title">新拖延運動報名表單</div>
+                  <div class="activity__date">
+                        <p>活動日期：2020/12/10 ~ 2020/12/11</p>
+                  </div>
+                  <div class="activity__location">
+                        <p>活動地點：台北市大安區新生南路二段1號</p>
+                  </div>
+                  <div class="caution">
+                        * 必填
+                  </div>
+                  <div class="information__insert">
+                          <section class="information__nickname">
+                                <h1>暱稱 <span>*</span></h1>
+                                <input name="nickname" placeholder="您的回答">
+                                <div></div>
+                          </section>
+                          <section class="information__email">
+                                <h1>電子郵件 <span>*</span></h1>
+                                <input name="email" placeholder="您的電子郵件">
+                                <div></div>
+                          </section>
+                          <section class="information__phonenumber">
+                                <h1>手機號碼 <span>*</span></h1>
+                                <input name="phonenumber" placeholder="您的手機號碼">
+                                <div></div>
+                          </section>
+                          <section class="information__option">
+                                <h1>報名類型 <span>*</span></h1>
+                                
+                                <div>
+                                        <input type="radio" name='option' >
+                                        躺在床上用想像力實作
+                                </div>
+                                <div>
+                                        <input type="radio" name='option' >
+                                        趴在地上滑手機找現成的
+                                </div>
+                                <a></a>
+                          </section>
+                          <section class="information__howyouknow">
+                                <h1>怎麼知道這個活動的？ <span>*</span></h1>
+                                <input name="howyouknow" placeholder="您的回答">
+                                <div></div>
+                          </section>
+                          <section class="information__else">
+                                <h1>其他</h1>
+                                <p>對活動的一些建議</p>
+                                <input name="advice" placeholder="您的回答">
+                          </section>     
+                  </div>
+                  <input  type='submit' class='submit' />
+                  <p class="reminder">請勿透過表單送出您的密碼。</p> 
+          </form>
+          
+    
+  </div>
+  <div class="color__block__bottom">
+    <div class="color__block__bottom1"></div>
+    <div class="color__block__bottom2">© 2020 © Copyright. All rights Reserved.</div>
+  </div>
+
+  <script>
+            const element = document.querySelector('.container__title')
+            const input1 = document.querySelector('input[name=nickname]')
+            const input2 = document.querySelector('input[name=email]')
+            const input3 = document.querySelector('input[name=phonenumber]')
+            const option = document.querySelectorAll('input[name=option]')
+            const input4 = document.querySelector('input[name=howyouknow]')
+            const input5 = document.querySelector('input[name=advice]')
+            
+            element.addEventListener('submit',function(e){
+                  e.preventDefault()
+                if ( input1.value !== '' && input2.value !== '' && input3.value !== '' && input4.value !== '' && (option[0].checked || option[1].checked)){
+                      if(option[0].checked === true){
+                      alert (`
+                      暱稱 : ${input1.value}
+                      電子郵件 : ${input2.value}
+                      手機號碼 : ${input3.value}
+                      報名類型 : 躺在床上用想像力實作
+                      怎麼知道這活動的 : ${input5.value}
+                      其他 : ${input5.value}`
+                             )
+                      }
+                      if(option[1].checked === true){
+                      alert (`
+                      暱稱 : ${input1.value}
+                      電子郵件 : ${input2.value}
+                      手機號碼 : ${input3.value}
+                      報名類型 : 趴在地上滑手機找現成的
+                      怎麼知道這活動的 : ${input5.value}
+                      其他 : ${input5.value}`
+                             )
+                      }
+
+                 } else {
+                        if (input1.value === '') {
+                          const nickname = document.querySelector('.information__nickname > div')
+                          nickname.innerText='這一欄還沒填喔！'
+                          nickname.classList.add('warning')
+                          e.preventDefault()
+                          } else {
+                          const nickname = document.querySelector('.information__nickname > div')
+                          nickname.innerText=''
+                          nickname.classList.remove('warning')
+                          }
+
+                        if (input2.value === '') {
+                          const email = document.querySelector('.information__email > div')
+                          email.innerText='這一欄還沒填喔！'
+                          email.classList.add('warning')
+                          e.preventDefault()
+                          } else {
+                          const email = document.querySelector('.information__email > div')
+                          email.innerText=''
+                          email.classList.remove('warning')
+                          }
+
+                        if (input3.value === '') {
+                          const phonenumber = document.querySelector('.information__phonenumber > div')
+                          phonenumber.innerText='這一欄還沒填喔！'
+                          phonenumber.classList.add('warning')
+                          e.preventDefault()
+                          } else {
+                          const phonenumber = document.querySelector('.information__phonenumber > div')
+                          phonenumber.innerText=''
+                          phonenumber.classList.remove('warning')
+                          }
+
+                        if (option[0].checked === false && option[1].checked === false) {
+                          const option = document.querySelector('.information__option > a')   
+                          option.innerText='拜託！選'
+                          option.classList.add('warning')
+                          e.preventDefault()
+                        } else {
+                          const option = document.querySelector('.information__option > a') 
+                          option.innerText=''
+                          option.classList.remove('warning')
+                        }
+
+                        if (input4.value === '') {
+                          const howyouknow = document.querySelector('.information__howyouknow > div')
+                          howyouknow.innerText='這一欄還沒填喔！'
+                          howyouknow.classList.add('warning')
+                          e.preventDefault()
+                          } else {
+                          const howyouknow = document.querySelector('.information__howyouknow > div')
+                          howyouknow.innerText=''
+                          howyouknow.classList.remove('warning')
+                          }
+                  }
+            })
+          
+  </script>
+
+
+</body>
+</html>
+
