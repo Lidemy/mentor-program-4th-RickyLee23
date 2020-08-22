@@ -1,4 +1,4 @@
-function getStreams(GamesName) { // function getStreams 用來取得被選取到的遊戲中，前xx名的直播資訊
+function getStreams(GamesName) { // function getStreams 用來取得被選取到的遊戲中，前20名的直播資訊
   const topStreamsRequest = new XMLHttpRequest();
   topStreamsRequest.open('GET', `https://api.twitch.tv/kraken/streams/?game=${GamesName}`, true);
   topStreamsRequest.setRequestHeader('Client-ID', 'x65tvhvwf2qnuphs3qnf891wc7wcs5');
@@ -75,8 +75,8 @@ function getTopGames() {
 
 getTopGames(); // 先取得前五名的遊戲名稱
 document.querySelector('.navigator__items div').addEventListener('click', (e) => {
-  if (e.target.classList.contains('btn')) {
-    document.querySelector('.live__title').innerHTML = ` // 將點選到的遊戲名稱，轉為遊戲敘述印出
+  if (e.target.classList.contains('btn')) { // 將點選到的遊戲名稱，轉為遊戲敘述印出
+    document.querySelector('.live__title').innerHTML = `
     <h1>${e.target.innerText}</h1>
     <br>
     <p>Top 20 popular live streams sorted by current viewers<p>
