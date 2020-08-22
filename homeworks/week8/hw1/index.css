@@ -1,0 +1,252 @@
+html, body,span, h1, h2, h3, h4 ,p {
+        padding: 0;
+        margin: 0;
+}
+.navigation__bar {
+       display : flex ;
+       justify-content: space-between;
+       height : 84px ;
+       align-items: center;
+       box-shadow: -1.4px -1.4px 6px 0 #97a2a0;
+
+}
+.navigation__title {
+        padding-left : 50px ;
+        font-size : 36px ;
+        color : #489846 ; 
+        display:inline;
+}
+.navigation__list {
+        display : flex ;
+        flex-direction: row;
+        padding-right : 50px;
+}
+.navigation__list li {
+        color : #010101 ;
+        font-size : 18px ;
+        display : inline ;
+        margin-left : 11px;
+        padding : 13px 25px 14px 
+}
+.navigation__list li:hover {
+        background: #ff7286;
+        color:white;
+        border-radius: 8px;
+        transition: background 0.2s ease-in;
+        cursor: pointer;
+}
+
+.footer__upper {
+        background : #e8efee;
+        height : 186px ;
+        display : flex ;
+        flex-direction: row;
+        justify-content: space-between;
+}
+.footer__disc {
+        margin : 44px auto 39px 107px;
+        font-size: 14px;
+
+}
+.phonenumber , .time , .email {
+        margin-top : 10px;
+}
+
+
+.footer__lower {
+        font-size:16px;
+        padding:15px;
+        color:white;
+        background : #35564b;
+        text-align: center;
+}
+.footer__logo {
+        margin-top : 35px ;
+        font-size: 36px;
+        color :#489846;
+        text-align: right;
+}
+.footer__links {
+        margin-right :109px;
+        display : flex ;
+        justify-content: right;
+        flex-direction: column;
+}
+
+.faq {
+        flex-direction: column;
+        text-align: center;      
+}
+
+.faq__title{
+        margin-top: 75px;
+        font-weight:bold;
+}
+   
+.faq__title div{
+        display: inline-block;
+        font-size: 36px;
+        padding-left:15px;
+        border-left:solid 15px #a3dea2;    
+}
+.faq__questions {
+      text-align: left;
+      display:inline-block;
+      margin-top:61px;
+      margin-bottom:41px;
+
+}
+.faq__number {
+        font-size: 24px;
+        color:#70b282;
+
+}
+.faq__disc {
+        font-size: 18px;
+        margin-left: 16px;
+        
+}
+.faq__Q {
+        border-width:1px;  
+        border-bottom-style:solid;
+        border-color: #a6e2c0;
+        padding-bottom: 28px;
+        width: 768px;
+}
+.faq__Q:nth-child(2) ,.faq__Q:nth-child(3) ,.faq__Q:nth-child(4) , .faq__Q:nth-child(5) ,.faq__Q:nth-child(6) {
+        padding-top:28px ;
+}
+
+@media(max-width: 768px){
+        .navigation__bar {
+       display : flex ;
+       justify-content: space-between;
+       height : 120px ;
+       align-items: center;
+       box-shadow: -1.4px -1.4px 6px 0 #97a2a0;
+       flex-direction: column;
+        }
+       .footer__upper {
+        background : #e8efee;
+        height : auto ;
+        display : flex ;
+        flex-direction: column-reverse;
+       }
+        .footer__logo {
+        margin-top : 35px ;
+        font-size: 36px;
+        color :#489846;
+        text-align: left;
+        }
+        .footer__links {
+        margin-left: 107px;
+        display : flex ;
+        }
+}
+
+.activity__frame {
+        width:500px;
+        height:560px;
+        border-radius: 16px;
+        background: white;
+        margin-top: 55px;
+
+        
+}
+.activity__page {
+        background: url(games-bn.png) center/cover no-repeat;
+        text-align:center;
+        height:767px;
+        display: flex;
+        justify-content: center;
+
+}
+.activity__page__none {
+        background: black;
+        text-align:center;
+        height:767px;
+        display: flex;
+        justify-content: center;
+
+}
+.activity__page__first {
+        background: url(first-prize.jpg) center/cover no-repeat;
+        text-align:center;
+        height:767px;
+        display: flex;
+        justify-content: center;
+
+}
+.activity__page__second {
+        background: url(second-prize.jpg) center/cover no-repeat;
+        text-align:center;
+        height:767px;
+        display: flex;
+        justify-content: center;
+
+}
+.activity__page__third {
+        background: url(third-prize.jpg) center/cover no-repeat;
+        text-align:center;
+        height:767px;
+        display: flex;
+        justify-content: center;
+
+}
+
+
+.prize__notice {
+        color:white;
+        margin-top:190px;
+        font-size: 36px;
+}
+
+.activity__title {
+        font-size: 24px;
+        color:#5ec1b6;
+        margin-top:40px;
+        margin-bottom:20px;
+
+}
+.activity__date , .activity__description , .activity__gift {
+        
+        border-bottom:1px #cdcdcd solid;
+        border-bottom-style:dotted;
+        display: flex;
+        margin:0px;
+        
+        
+}
+.content__title {
+        font-size: 18px;
+        font-weight: bold;
+        display: inline-block;
+        width:90px;
+        margin-top: 20px;
+        margin-left:20px;
+        
+        
+        
+}
+.content__description {
+        font-size: 16px;
+        display: inline-block;
+        margin-left:20px;
+        margin-bottom:20px;
+        margin-top:20px;
+             
+}
+
+.activity__content {
+        text-align: left;
+}
+.lottery__button {
+        padding:18px 160px;
+        border-radius: 8px;
+        border-width: 1px;
+        color:white;
+        font-size:20px;
+        background-color:#e62a45;
+        margin-top:36px;
+        cursor: pointer;
+}
