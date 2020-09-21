@@ -1,0 +1,124 @@
+       body {
+        background: #e7e7e7;
+      }
+      * {
+        margin:0px;
+        padding:0px;
+        box-sizing: border-box;
+      }
+      .nav {
+        background-color: #ffc4c6;
+        padding:10px;
+        margin-bottom:10px;
+      }
+      .message__board {
+         text-align: center;
+         
+       }
+       .title {
+         font-size: 24px;
+         font-weight: bold;
+         word-break:break-all;
+       }
+       .input__column {
+         padding:0px 5px;
+         border: 1px solid #c2dffb;
+        border-radius: 3px;
+        height: 20px;
+       }
+       ::placeholder {
+         color :black;
+         font-size:15px;
+       }
+       textarea {
+         width:100%;
+         border:1px solid #c2dffb;
+         border-radius: 5px;
+         padding:0px 5px;
+         box-sizing: border-box;
+       }
+       
+       .comment__container {
+         width: 700px;
+         display:inline-block;
+         text-align: left;
+         padding:40px;
+         box-shadow: 1px 1px 3px #e8e8e8;
+         background-color: white;
+         border-radius: 5px;
+       }
+       form > * {
+         margin-top: 20px;
+       }
+       .submit__btn {
+         border:1px solid #c2dffb;
+         background: white;
+         border-radius: 5px;
+         padding:3px 10px;
+         cursor: pointer;
+         font-size:14px;
+       }
+ 
+       .nickname {
+         font-weight:bold;
+         color:#5c9edc;
+         word-break:break-all;
+       }
+ 
+       .message__review {
+         display:flex;
+ 
+       }
+       .message__review img {
+         color:red;
+         background: blue;
+ 
+       }
+       .board__hr {
+         margin:20px 0px 0px 0px ;
+         height:1px;
+         background :#e8e8e8;
+         max-width:95%;
+       }
+       .photo {
+         min-width: 50px;
+         width: 50px;
+         height:50px;
+         border-radius:50%;
+         background:#e4f0fb;
+       }
+       .message__info {
+         margin-left: 20px;
+       }
+       .time {
+         color:#a0a0a0;
+       }
+       .message {
+         margin-top:10px;
+         word-break:break-all;
+         white-space:pre-line;
+       }
+       .message__review {
+         margin-top:10px;
+       }
+       .error {
+         color:red;
+       }
+       .board__btn {
+         border:1px solid #c2dffb;
+         background: white;
+         border-radius: 5px;
+         padding:3px 10px;
+         cursor: pointer;
+         font-size:14px;
+         text-decoration:none;
+         color:black;
+         margin:5px;
+       }
+       .board__service {
+         margin-bottom:20px;
+       }
+       .reminder {
+         margin:20px;
+         color:red;
+       }    
