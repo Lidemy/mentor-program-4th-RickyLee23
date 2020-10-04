@@ -25,6 +25,8 @@ MPA 是當使用者 按下表單或者是向伺服器傳送 requset，而伺服�
 這次的功課則是，在新增留言欄打好資訊之後，利用 ajax 送出去給 api_add_comment 處理，但是畫面沒有跳轉，而 api_add_comment 送回來的 response 可以即時的交給瀏覽器上的 js，執行完後呈現在網頁上。
 
 
+
+
 以上作業參考資料來自：
 [前端小字典三十天【每日一字】– SPA](https://ithelp.ithome.com.tw/articles/10160709)
 [JS AJAX 筆記](https://medium.com/%E9%A6%AC%E6%A0%BC%E8%95%BE%E7%89%B9%E7%9A%84%E5%86%92%E9%9A%AA%E8%80%85%E6%97%A5%E8%AA%8C/js-ajax-%E7%AD%86%E8%A8%98-b9a57976fa60)
