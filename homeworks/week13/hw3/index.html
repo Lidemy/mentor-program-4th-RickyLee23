@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+  <head>    
+               <style>
+                       .navigator__title {
+                               font-size: 28px;
+                       }
+                       .navigator {
+                               display:flex;
+                               justify-content: space-between;
+                               margin-left: 10px;
+                               margin-right:10px;
+                       }
+                       .navigator__items {
+                               margin-top: 8px;
+                       }
+                       .navigator__items div {
+                               display:flex;
+                       }
+                       .navigator__items div div {
+                               margin-left:30px;
+                       }
+                       .navigator__items div div:hover {
+                               background-color: black;
+                               color:white;
+                               border-radius: 5px;
+                               cursor: pointer;
+                       }
+                       .live__section {
+                               background-color: black;
+                       }
+                       .live {
+                               
+                               color:white;
+                               display:flex;
+                               flex-wrap: wrap;
+                               justify-content:center;  
+                       }
+                       .live__frame {
+                               height:300px;
+                               width: 360px;
+                               display:inline-block;
+                               background-color: black;
+                               margin: 15px;
+                               cursor: pointer;
+                       }
+                       .live__frame__blank {
+                               height:300px;
+                               width: 360px;
+                               display:inline-block;
+                               background-color: black;
+                               margin: 15px;
+                       }
+                       
+                       
+                       .live__disc {
+                               display: flex;
+                               margin-top:20px;
+                       }
+                       .player__head img {
+                               max-width:100%;
+                               max-height:100%;
+                               border-radius: 50%;
+                               border:none;
+                       }
+                       .player__head {
+                               width:80px;
+                               display: inline-block;
+                               margin-left: 10px;  
+                       }
+                       .player__disc {
+                               display:inline;
+                               padding:10px;
+                               margin-left:20px;
+                               color:white;
+                       }
+                       .player__title {
+                        overflow:hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        max-width:200px ;
+                        margin-bottom: 10px;
+                       }
+                       .live__title {
+                               color: white;
+                               text-align: center;       
+                       }
+                       h1 {
+                               padding-top:20px;
+                       }
+                       h1 ,p {
+                               margin:0px;      
+                       }
+                       *{
+                               margin:0px;
+                       }
+               </style>
+  </head>
+  <body>
+          <div class = 'game__page'>
+            <div class = 'navigator'>
+                <div class = 'navigator__title'>Twitch Top Games
+                </div>
+                <div class = 'navigator__items'>
+                  <div>
+                          
+                  </div>
+                </div>
+            </div>
+            <div class = 'live__section'>
+              <div class = 'live__title'>
+              </div>
+              <div class = 'live'>
+              </div>
+            </div>
+          </div>
+    <script>
+
+function getTopGames () { //獲得人氣前五名的遊戲的資料
+  return fetch('https://api.twitch.tv/kraken/games/top?limit=5',{
+    method: 'GET',
+    headers: new Headers({
+      'Client-ID':'x65tvhvwf2qnuphs3qnf891wc7wcs5',
+      'Accept': 'application/vnd.twitchtv.v5+json',
+    })
+  }).then(response => {
+      //console.log(response)
+      return response.json()
+      }).then(json => {
+      //console.log(json)
+      return json
+      }).catch(err => err)
+}
+function getStreams(game) { //把 選到的遊戲的前20個串流 html 做出來
+//console.log('game:',game)
+  document.querySelector('.live').innerHTML='' //先把畫面清空
+  renderNav(game).then(topStreams => {
+    for(let i = 0; i < topStreams.streams.length; i++) {
+        let item = document.createElement('div')
+        item.innerHTML = `
+          <div class = 'live__frame'>
+            <div class = 'live__stream'><img src=${topStreams.streams[i].preview.medium}></div>
+              <div class = 'live__disc'>
+                <div class = 'player__head'><img src=${topStreams.streams[i].channel.logo}></div>
+                <div class = 'player__disc'>
+                <div class = 'player__title'>${topStreams.streams[i].channel.status}</div>
+                <div class = 'player__name'>${topStreams.streams[i].channel.name}</div>
+              </div>
+            </div>
+          </div>`
+  document.querySelector('.live').appendChild(item)
+    }
+  })
+}
+function renderNav(gameChosen) { //抓出選到的遊戲的人氣前20的資料
+  //console.log('gameChosen:',gameChosen)
+  return fetch(`https://api.twitch.tv/kraken/streams/?game=${encodeURIComponent(gameChosen)}&limit=20`, {
+      method: 'GET',
+      headers: new Headers({
+        'Client-ID':'x65tvhvwf2qnuphs3qnf891wc7wcs5',
+        'Accept': 'application/vnd.twitchtv.v5+json',
+      })
+  }).then(response => {
+      //console.log(response)
+      return response.json()
+      }).then(json => {
+      //console.log(json)
+      return json
+      }).catch(err => err)
+}
+
+document.querySelector('.navigator__items').addEventListener('click',(e) => {
+  if(!e.target.getAttribute('data-value')) { //如果按到沒有 data-value 屬性的就忽略，避免捕獲冒泡機制
+        return
+  }
+  document.querySelector('.live__title').innerHTML = //變更 nav bar 下方的文字
+    `
+    <h1>${e.target.innerText}</h1>
+    <br>
+    <p>Top 20 popular live streams sorted by current viewers<p>
+    `
+  getStreams(e.target.innerText) //變換成選到的遊戲並取得其串流
+})
+
+getTopGames().then(topGames => {
+        //console.log(topGames.top[0].game.name)
+        let num = 1
+        for (let i = 0; i < topGames.top.length; i++) {
+          let item = document.createElement('div')
+          item.innerHTML = `${topGames.top[i].game.name}`
+          item.setAttribute('data-value',num)
+          document.querySelector('.navigator__items div').appendChild(item)
+          num++
+        }
+        getStreams(topGames.top[0].game.name) //預設一開始的畫面就是人氣排名第一名的遊戲串流
+})
+             
+    </script>
+  </body>
+</html>

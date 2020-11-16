@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Week12 留言板</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" >
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" ></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style>
+      .card {
+        margin:12px auto;
+      }
+      .navbar  {
+        margin-bottom:20px;
+      }
+      .card__writer {
+        font-size:30px;
+        margin-right:10px;
+      }
+      .card__body {
+        padding:10px;
+      }
+      
+      
+    </style>
+    
+    <script>
+
+      const seeMore = `<div class="more"><button class="btn btn-primary">載入更多</button></div>`
+      let lastId = ''
+      let offset = 5
+
+      
+      function escape(toOutput) {
+        return toOutput.replace (/\&/g, '&amp;')
+            .replace(/\</g, '&lt;')
+            .replace(/\>/g, '&gt;')
+            .replace(/\"/g, '&quot;')
+            .replace(/\'/g, '&#x27')
+            .replace(/\//g, '&#x2F');
+      }
+
+      function commentToDOM(container, comment, orderBy) { //把資料轉成 html 形式輸出
+        const template = `
+              <div class="card" >
+                <div class="card__body">
+                  <div>
+                    <span class="card__writer">${escape(comment.nickname)}</span>
+                    <span class="card__time">${comment.created_at}</span>
+                  <div>
+                  <div class="hr border-bottom"></div>
+                <p class="card__text">${escape(comment.content)}</p>
+                </div>
+              </div>
+            `
+        if(orderBy === 'prepend') {
+          container.prepend(template)
+        } else if (orderBy === 'append') {
+          container.append(template)
+        }
+      }
+
+      function getComments(site_Key) {
+
+        let url = `http://localhost:8080/Ricky/testAPI/api_comments.php?site_key=${site_Key}&before=${lastId}`
+        $.ajax({
+          url,
+        }).done(function(data) {
+          if(!data.ok) {
+            alert(data.message)
+            return
+          }
+          let comments = data.discussions
+          console.log(comments)
+          for (comment of comments) {
+            commentToDOM($('.comments'),comment,'append')
+          }
+          if (comments.length < offset) { // 如果這次跑出來的 comments.length 小於 offset(5筆)，代表資料沒了，所以隱藏按鈕
+            $('.more').hide()
+          } else {
+            lastId = comments[comments.length-1].id 
+            $('.comments').append(seeMore)
+          }
+        })
+
+      }
+
+      
+      
+      $(document).ready(() => {
+        
+        getComments('rrr') //打開網頁的一開始，先傳入 site_key，把該 site_key 底下現有最新的五筆資料叫出來
+  
+        $('.comments').on('click','.more',() => { //點選載入更多，再追加五筆資料
+          getComments('rrr')
+          $('.more').hide()
+        })
+
+        $('.add-comment-form').submit(e => {
+          e.preventDefault();
+          const newCommentData = { 
+            site_key:'rrr',
+            nickname:$('input[name=nickname]').val(),
+            content:$('textarea[name=content]').val(),
+            
+          }
+          $.ajax({
+            type:'POST',
+            url:'http://localhost:8080/Ricky/testAPI/api_add_comments.php',
+            data: newCommentData
+          }).done(function(data){
+          if (!data.ok) {
+            alert(data.message)
+            return
+          }
+          
+          let comments = data.discussions
+          console.log(comments)
+          commentToDOM($('.comments'), newCommentData,'prepend')
+          });
+
+        });
+        
+      });
+
+      
+
+        
+    </script>
+  </head>
+  <body>
+    <nav class="navbar navbar-light bg-light sticky-top shadow-sm p-3 mb-5 bg-white rounded">
+      <span class="navbar-brand mb-0 h1">留言板</span>
+    </nav>
+    <div class="container">
+      <form class="add-comment-form">
+        <div class="form-group">
+          <label for="form-nickname">暱稱</label>
+          <input name="nickname" type="text" class="form-control" id="form-nickname" >
+          <label for="content-textarea">留言內容</label>
+          <textarea name="content" class="form-control" id="content-textarea" rows="3"></textarea>
+        </div>
+          <button type="submit" class="btn btn-primary">送出</button>
+      </form>
+      <div class="comments">
+        
+      </div>
+      
+    </div>
+      
+  </body>
+</html>

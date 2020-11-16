@@ -1,0 +1,58 @@
+      .container__todo {
+        text-align:center;
+        margin:100px auto;
+        max-width:500px;
+      }
+      .edit__todo {
+        text-align:left;
+        white-space: pre-line;
+        word-break:break-word;
+        max-width: 300px;
+        display:inline-block;
+      }
+      .col input {
+        max-width:85%;
+        margin:40px auto;
+      }
+      .card__item {
+        display:flex;
+        justify-content:space-between;
+      }
+      #finishOrNot {
+        padding:1px 6px;
+        min-width:28px;
+        max-height:30px;
+      }
+      
+      .delete__mark :hover{
+        cursor:pointer;
+      }
+      .edit__mark :hover{
+        cursor:pointer;
+      }
+      .edit__text {
+        max-width:330px;
+        max-height:28px;
+        opacity: .3;
+      }
+      .card__item {
+        margin-top:10px;
+      }
+      .finished {
+        text-decoration:line-through;
+        text-decoration-color:black;
+      }
+      .btn__checked {
+        background:white;
+        color:#17a2b8;
+      }
+      .active {
+        border:2px #17a2b8 solid;
+      }
+      .card-body {
+        padding:0px 30px 30px 30px;
+      }
+      .save__all {
+        cursor:pointer;
+        text-align: right;
+      }
