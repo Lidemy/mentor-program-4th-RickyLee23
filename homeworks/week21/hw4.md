@@ -1,6 +1,6 @@
 ## 為什麼我們需要 React？可以不用嗎？
 
-可以的！但是 React 讓我們以不同的思考邏輯和更簡短的方式去撰寫程式
+可以的！但是 React 讓我們以不同的思考邏輯和更簡短的方式去撰寫程式。
 單純只用 JS 語法寫程式的話，當要選一個 html 元素時，會需要設定 querySelector 並在元素上加入 id 、class 去選取 ; 若要監控該元素，還需要加上 addEventListener，寫出來的程式碼會有很多部分是在操作 DOM。
 
 React 環境可以很簡單的用 class component 或者 functional component 去切分不同功能的元件，這些 component 也可以很輕易的被重複使用。
